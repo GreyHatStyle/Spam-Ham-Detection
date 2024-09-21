@@ -1,0 +1,7 @@
+test.py
+test2.py
+pyvenv.cfg
+/.vscode/
+/Include/
+/Lib/
+/Scripts/
