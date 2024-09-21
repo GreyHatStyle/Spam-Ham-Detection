@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spam Or Ham Detection Module</title>
-    <link rel="stylesheet" href="project.css">
+    <!-- Url referenced to static/CSS/project.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/project.css')}}">
 </head>
 <body>
      <!-- Navbar -->
      <nav class="navbar">
         <a href="#" class="navbar-brand">
-            <img src="icon_navbar.svg" alt="Logo">
+            <img src="{{ url_for('static', filename='icon_navbar.svg')}}" alt="Logo">
             Spam Or Ham Detection Module
         </a>
     </nav>
@@ -23,6 +24,6 @@
     </div>
 
     <!--Script after clicking th validate button-->
-    <script src="index.js"></script>
+    <script src="{{ url_for('static', filename='JS/index.js')}}"></script>
 </body>
 </html>
