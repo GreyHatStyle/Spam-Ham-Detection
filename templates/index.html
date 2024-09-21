@@ -4,55 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INDEX</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border: 2px solid black;
-            background-color: black;
-        }
-        .logo {
-
-        }
-        .right ul {
-            display: flex;
-        }
-        .right ul li {
-            font-size: 20px;
-            list-style: none;
-            margin: 20px;
-            color: whitesmoke;
-        }
-        .right ul li svg {
-            color: whitesmoke;
-        }
-        .inputForms {
-            margin: 20px;
-            padding: 20px;
-        }
-        .inputForms form {
-            display: flex;
-            flex-direction: column;
-        }
-        .inputForms input[type="text"] {
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .inputForms button {
-            padding: 10px;
-            font-size: 16px;
-            background-color: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="project.css">
     <script>
         function validateForm() {
             var inputText = document.forms["inputForm"]["inputText"].value;

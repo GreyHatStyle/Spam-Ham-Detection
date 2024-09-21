@@ -1,0 +1,13 @@
+/*Navbar Section */
+.Navbar-color{
+    background-color: black !important;
+}
+.Navbar-heading{
+    justify-content: center !important; 
+}
+.Navbar-font{
+    color: aliceblue;
+    font-family: cursive;
+    font-size: 45px;
+}
+
