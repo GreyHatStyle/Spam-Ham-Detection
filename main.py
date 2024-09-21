@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, jsonify
 import joblib
 
 
@@ -58,7 +58,8 @@ def hello():
 
 @app.route("/predict", methods=['POST', 'GET'])
 def predict():
-    text = request.form.get('inputText')
+    data = request.get_json()
+    text = data.get('inputText')
 
     if text != None:
 
@@ -71,7 +72,8 @@ def predict():
     else:
         ans=""
 
-    return render_template("index.html", answer=ans)
+    # return render_template("index.html", answer=ans)
+    return jsonify({'answer': ans}) 
 
 
 app.run(debug=True)
