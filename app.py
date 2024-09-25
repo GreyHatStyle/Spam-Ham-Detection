@@ -1,6 +1,6 @@
 from flask import Flask, render_template,request, jsonify
 import joblib
-
+import os
 
 # Pipe Line classes
 from sklearn.base import TransformerMixin, BaseEstimator, ClassifierMixin
@@ -85,9 +85,8 @@ def predict():
     text = data.get('inputText')
 
     if text != None:
-
-        preprocess = joblib.load('Models\\Preprocessing.joblib')
-        model = joblib.load('Models\\spam-ham-pipe.joblib')
+        preprocess = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'Preprocessing.joblib'))
+        model = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'spam-ham-pipe.joblib'))
 
         ans = model.predict(preprocess.transform([text]))
 
