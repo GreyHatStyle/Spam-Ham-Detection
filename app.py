@@ -99,5 +99,3 @@ def predict():
     # return render_template("index.html", answer=ans)
     return jsonify({'answer': ans}) 
 
-
-app.run(debug=True)
