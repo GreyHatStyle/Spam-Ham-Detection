@@ -99,3 +99,5 @@ def predict():
     # return render_template("index.html", answer=ans)
     return jsonify({'answer': ans}) 
 
+if __name__ == "__main__":
+    app.run(debug=True)
