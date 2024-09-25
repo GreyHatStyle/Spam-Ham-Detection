@@ -15,7 +15,7 @@ def hello():
 
 @app.route("/predict", methods=['POST', 'GET'])
 def predict():
-    from custom_class import KerasClassifier, TextPreprocessor
+    
     data = request.get_json()
     text = data.get('inputText')
 
@@ -35,4 +35,5 @@ def predict():
     return jsonify({'answer': ans}) 
 
 if __name__ == "__main__":
+    from custom_class import KerasClassifier, TextPreprocessor
     app.run(debug=True)
