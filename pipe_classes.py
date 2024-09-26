@@ -3,11 +3,6 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 
-from sklearn.base import TransformerMixin, BaseEstimator, ClassifierMixin
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-import numpy as np
-
 
 class TextPreprocessor(BaseEstimator, TransformerMixin):
         def __init__(self, max_vocab_size=20000, max_len=None):
