@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request, jsonify
 import joblib
 import os
+import pickle
 from sklearn.base import TransformerMixin, BaseEstimator, ClassifierMixin
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -10,45 +11,9 @@ from sklearn.base import TransformerMixin, BaseEstimator, ClassifierMixin
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
-import sys
-import re
-from gunicorn.app.wsgiapp import run
 
 
-
-
-
-app = Flask(__name__)
-
-@app.route("/") # Site end
-def hello():
-
-    return render_template("index.html")
-
-
-@app.route("/predict", methods=['POST', 'GET'])
-def predict():
-   
-    data = request.get_json()
-    text = data.get('inputText')
-    
-    if text != None:
-        print(os.path.join(os.path.dirname(__file__), 'Models', 'Preprocessing.joblib'))
-        preprocess = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'Preprocessing.joblib'))
-        model = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'spam-ham-pipe.joblib'))
-
-        ans = model.predict(preprocess.transform([text]))
-
-        ans = ans[0]
-
-    else:
-        ans=""
-
-    # return render_template("index.html", answer=ans)
-    return jsonify({'answer': ans}) 
-
-if __name__ == "__main__":
-    class TextPreprocessor(BaseEstimator, TransformerMixin):
+class TextPreprocessor(BaseEstimator, TransformerMixin):
         def __init__(self, max_vocab_size=20000, max_len=None):
             self.max_vocab_size = max_vocab_size
             self.max_len = None
@@ -73,7 +38,7 @@ if __name__ == "__main__":
 
 
 
-    class KerasClassifier(BaseEstimator, ClassifierMixin):
+class KerasClassifier(BaseEstimator, ClassifierMixin):
         def __init__(self, model):
             self.model = model
         
@@ -101,6 +66,46 @@ if __name__ == "__main__":
             pred = (predictions >= 0.5).astype(int)
             print("Predictions: ", predictions)
             return self.label(pred)
+
+
+
+app = Flask(__name__)
+
+@app.route("/") # Site end
+def hello():
+
+    return render_template("index.html")
+
+
+@app.route("/predict", methods=['POST', 'GET'])
+def predict():
+   
+    data = request.get_json()
+    text = data.get('inputText')
     
-    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(run())
+    if text != None:
+        print(os.path.join(os.path.dirname(__file__), 'Models', 'Preprocessing.joblib'))
+
+        with open(os.path.join(os.path.dirname(__file__), 'Models', 'Preprocessing.joblib'), 'rb') as f:
+            preprocess = pickle.load(f)
+
+        # preprocess = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'Preprocessing.joblib'))
+        # model = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'spam-ham-pipe.joblib'))
+
+        with open(os.path.join(os.path.dirname(__file__), 'Models', 'spam-ham-pipe.joblib'), 'rb') as f:
+            model = pickle.load(f)
+
+        ans = model.predict(preprocess.transform([text]))
+
+        ans = ans[0]
+
+    else:
+        ans=""
+
+    # return render_template("index.html", answer=ans)
+    return jsonify({'answer': ans}) 
+
+if __name__ == "__main__":
+    
+        
+    app.run(debug=True)
