@@ -11,6 +11,14 @@ class CustomUnpickler(pickle.Unpickler):
             from pipe_classes import TextPreprocessor
             return TextPreprocessor
         return super().find_class(module, name)
+    
+class CustomUnpickler2(pickle.Unpickler):
+    def find_class(self, module, name):
+        if name == 'KerasClassifier':
+            from pipe_classes import KerasClassifier
+            return KerasClassifier
+        return super().find_class(module, name)
+
 
 app = Flask(__name__)
 
@@ -36,7 +44,7 @@ def predict():
         # model = joblib.load(os.path.join(os.path.dirname(__file__), 'Models', 'spam-ham-pipe.joblib'))
 
         with open(os.path.join(os.path.dirname(__file__), 'Models', 'spam-ham-pipe.joblib'), 'rb') as f:
-            model = pickle.load(f)
+            model = CustomUnpickler2(f).load()
 
         ans = model.predict(preprocess.transform([text]))
 
