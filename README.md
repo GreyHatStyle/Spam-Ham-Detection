@@ -5,6 +5,9 @@ This project is developed to detect whether the SMS your recieved is **Spam** or
 1. [Model Implementation](#model-implementation)
 2. [Run Locally](#run-locally)
 3. [How to Use?](#how-to-use)
+    - [Sample Inputs](#sample-inputs)
+    - [Responsiveness](#responsiveness)
+5. [Developed By](#developed-by)
 
 
 
@@ -19,19 +22,29 @@ This project is developed to detect whether the SMS your recieved is **Spam** or
 
 ## Run Locally
 To setup this project in your local enviornment follow the below steps (*Its recommended to do these following steps in a virtual enviornment*).
+\
+If you **don't** want to setup virtual envoirnment, then skip 2nd and 4th step.
 1. Clone the Repo in your local directory
 ```
 git clone https://github.com/GreyHatStyle/Spam-Ham-Detection.git
 ```
-2. Move to Project Directory
+2. Create Virtual Enviornment
+```
+python -m venv Spam-Ham-Detection
+```
+3. Move to Project Directory
 ```
 cd Spam-Ham-Detection
 ```
-3. Install Dependencies
+4. Activate Virtual Enviornment
+```
+Scripts\activate
+```
+5. Install Dependencies
 ```
   pip install -r requirements.txt
 ```
-4. Start the Project
+6. Start the Project
 ```
 python app.py
 ```
@@ -43,7 +56,9 @@ The text data (input) will be sent to python envoirnment (for predictions) using
 \
 \
 ![image](https://github.com/user-attachments/assets/14452b99-d54e-4e04-8ae5-bdd043bbdd2a)
-\
+
+
+
 ### Sample inputs
 - Congratulations!! you won a free lottery with 2000 dollars!!
 - Hi, there I am manas bisht.
@@ -52,3 +67,19 @@ The text data (input) will be sent to python envoirnment (for predictions) using
 
 \
 And many more...
+
+### Responsiveness
+1. Iphone SE
+\
+![image](https://github.com/user-attachments/assets/23ad1dab-292c-4754-b21f-47b05eecbb5e)
+
+
+
+3. Samsung Galaxy S20 Ultra
+\
+![image](https://github.com/user-attachments/assets/e113688e-6a8a-421f-a2da-37552049f2ea)
+
+
+## Developed By
+- [@manas_bisht](https://github.com/GreyHatStyle): The Backend Prediction part.
+- [@daksh_purohit](https://github.com/EzioAuditore12): The Frontend Web development part.
