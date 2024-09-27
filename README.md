@@ -8,6 +8,7 @@ This project is developed to detect whether the SMS your recieved is **Spam** or
     - [Sample Inputs](#sample-inputs)
     - [Responsiveness](#responsiveness)
 5. [Developed By](#developed-by)
+6. [License](#license)
 
 
 
@@ -83,3 +84,6 @@ And many more...
 ## Developed By
 - [@manas_bisht](https://github.com/GreyHatStyle): The Backend Prediction part.
 - [@daksh_purohit](https://github.com/EzioAuditore12): The Frontend Web development part.
+
+## License
+[MIT License](https://github.com/GreyHatStyle/Spam-Ham-Detection/blob/main/LICENSE)
