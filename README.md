@@ -3,8 +3,9 @@ This project is developed to detect whether the SMS your recieved is **Spam** or
 
 ## Table of Contents
 1. [Model Implementation](#model-implementation)
-2. [Run Locally](#run-locally)
-3. [How to Use?](#how-to-use)
+2. [Technology Used](#technology-used)
+3. [Run Locally](#run-locally)
+4. [How to Use?](#how-to-use)
     - [Sample Inputs](#sample-inputs)
     - [Responsiveness](#responsiveness)
 5. [Developed By](#developed-by)
@@ -20,6 +21,17 @@ This project is developed to detect whether the SMS your recieved is **Spam** or
 - Surprisingly using **CNN** concept with 1 Dimensional Convolutional Layers gave accuracy of **97.23%** of Test Dataset.
 - Then using concept of **Pipelining**, two instances for Text preprocessing and for Prediction was created, which were later used in backend of website.
 - The Front of Website was developed using **HTML**, **CSS** and **Javascript** with the help for **Flask** for connection.
+
+## Technology Used
+1. Website:
+    - HTML
+    - CSS
+    - Javascript
+    - Flask
+2. Model:
+    - Tensorflow 2.0
+    - Scikit-learn
+    - Panas and Numpy
 
 ## Run Locally
 To setup this project in your local enviornment follow the below steps (*Its recommended to do these following steps in a virtual enviornment*).
